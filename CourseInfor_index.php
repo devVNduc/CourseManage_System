@@ -36,7 +36,7 @@ require_once 'dbconfig.php';
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT * INTO course_into";
+                            $sql = "SELECT Name_course,Start_day,End_day from course_infor";
                             $query = $conn->prepare($sql);
                             $query->execute();
                             $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -50,8 +50,6 @@ require_once 'dbconfig.php';
                                         <td><?php echo htmlentities($result->Start_day) ?></td>
                                         <td><?php echo htmlentities($result->Start_day) ?></td>
                                     </tr>
-
-
                             <?php
                                 }
                             }
@@ -67,8 +65,6 @@ require_once 'dbconfig.php';
         </div>
     </div>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-
 </body>
 
 </html>
