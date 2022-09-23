@@ -17,6 +17,7 @@ require_once 'dbconfig.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -25,45 +26,69 @@ require_once 'dbconfig.php';
             <div class="col-md-12">
                 <h3>Course Managemant System</h3>
                 <hr />
-                <a href="insert.php"><button class="btn btn-primary"> Insert Record</button></a>
                 <div class="table-responsive">
-                    <table id="mytable" class="table table-bordred table-striped">
-                        <thead>
-                            <th>#</th>
-                            <th>Course Name</th>
-                            <th>Start Day</th>
-                            <th>End Day</th>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $sql = "SELECT Name_course,Start_day,End_day from course_infor";
-                            $query = $conn->prepare($sql);
-                            $query->execute();
-                            $results = $query->fetchAll(PDO::FETCH_OBJ);
-                            $ctn = 1;
-                            if ($query->rowCount() > 0) {
-                                foreach ($results as $result) {
-                            ?>
-                                    <tr>
-                                        <td><?php echo htmlentities($ctn) ?></td>
-                                        <td><?php echo htmlentities($result->Name_course) ?></td>
-                                        <td><?php echo htmlentities($result->Start_day) ?></td>
-                                        <td><?php echo htmlentities($result->Start_day) ?></td>
-                                    </tr>
-                            <?php
-                                }
-                            }
-                            $ctn++;
-                            ?>
+                    <div class="main-topic">
+                        <!-- Thông tin khóa học
+                            QL Lớp học
+                            QL Giáo viên
+                            QL Môn học
+                            PCGD cho giáo viên
+                            Phân công môn cho lớp
+                            Quản lý thời khóa biểu -->
+                        <div class="list-group">
+                            <h2 class="list-group-item">Main Menu</h2>
+                            <a href="#" class="list-group-item active">Ql lớp học</a>
+                            <a href="#" class="list-group-item">QL Giáo viên</a>
+                            <a href="#" class="list-group-item">QL Môn học</a>
+                            <a href="#" class="list-group-item">PCGD cho giáo viên</a>
+                            <a href="#" class="list-group-item">Phân công môn cho lớp</a>
+                            <a href="#" class="list-group-item">Quản lý thời khóa biểu</a>
+                        </div>
+                        <div class="table-infor_class">
+                            <table id="mytable" class="table table-bordred table-striped">
+
+                                <thead>
+                                    <th>#</th>
+                                    <th>Course Name</th>
+                                    <th>Start Day</th>
+                                    <th>End Day</th>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $sql = "SELECT Name_course,Start_day,End_day from course_infor";
+                                    $query = $conn->prepare($sql); //chuẩn bị kết nối câu lệnh 
+                                    $query->execute(); //thực hiện kết nối
+                                    $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                    $ctn = 1;
+                                    if ($query->rowCount() > 0) {
+                                        foreach ($results as $result) {
+                                    ?>
+                                            <tr>
+                                                <td><?php echo htmlentities($ctn) ?></td>
+                                                <td><?php echo htmlentities($result->Name_course) ?></td>
+                                                <td><?php echo htmlentities($result->Start_day) ?></td>
+                                                <td><?php echo htmlentities($result->Start_day) ?></td>
+                                            </tr>
+                                    <?php
+                                        }
+                                    }
+                                    $ctn++;
+                                    ?>
 
 
+                                </tbody>
+                            </table>
+                            <a href="insert.php"><button class="btn btn-primary"> Insert Record</button></a>
 
-                        </tbody>
-                    </table>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
+
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </body>
 
