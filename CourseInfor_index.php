@@ -28,13 +28,6 @@ require_once 'dbconfig.php';
                 <hr />
                 <div class="table-responsive">
                     <div class="main-topic">
-                        <!-- Thông tin khóa học
-                            QL Lớp học
-                            QL Giáo viên
-                            QL Môn học
-                            PCGD cho giáo viên
-                            Phân công môn cho lớp
-                            Quản lý thời khóa biểu -->
                         <div class="list-group">
                             <h2 class="list-group-item">Main Menu</h2>
                             <a href="#" class="list-group-item active">Ql lớp học</a>
@@ -55,7 +48,7 @@ require_once 'dbconfig.php';
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $sql = "SELECT Name_course,Start_day,End_day from course_infor";
+                                    $sql = "SELECT Name_course,Start_day,End_day from courses_infor";
                                     $query = $conn->prepare($sql); //chuẩn bị kết nối câu lệnh 
                                     $query->execute(); //thực hiện kết nối
                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -78,7 +71,7 @@ require_once 'dbconfig.php';
 
                                 </tbody>
                             </table>
-                            <a href="insert.php"><button class="btn btn-primary"> Insert Record</button></a>
+                            <a href="insertCourse.php"><button class="btn btn-primary"> Insert Record</button></a>
 
                         </div>
 
