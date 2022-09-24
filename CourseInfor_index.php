@@ -60,7 +60,9 @@ require_once 'dbconfig.php';
                                                 <td><?php echo htmlentities($ctn) ?></td>
                                                 <td><?php echo htmlentities($result->Name_course) ?></td>
                                                 <td><?php echo htmlentities($result->Start_day) ?></td>
-                                                <td><?php echo htmlentities($result->Start_day) ?></td>
+                                                <td><?php echo htmlentities($result->End_day) ?></td>
+                                                <td><a href="updateCourse.php?id="><button style=""></button></a></td>
+
                                             </tr>
                                     <?php
                                         }
@@ -68,10 +70,9 @@ require_once 'dbconfig.php';
                                     $ctn++;
                                     ?>
 
-
                                 </tbody>
                             </table>
-                            <a href="insertCourse.php"><button class="btn btn-primary"> Insert Record</button></a>
+                            <a href="insertCourse.php"><button class="btn btn-primary">Add Course</button></a>
 
                         </div>
 

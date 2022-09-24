@@ -14,10 +14,10 @@ if (isset($_POST['insert'])) {
     $lastInsertId = $conn->lastInsertId();
     if ($lastInsertId) {
         echo "<script>alert('Record inserted successfully');</script>";
-        echo "<script>window.location.href='index.php'</script>";
+        echo "<script>window.location.href='Courseinfor_index.php'</script>";
     } else {
         echo "<script>alert('Something went wrong. Please try again');</script>";
-        echo "<script>window.location.href='index.php'</script>";
+        echo "<script>window.location.href='Courseinfor_index.php'</script>";
     }
 }
 ?>
