@@ -44,38 +44,33 @@ if (isset($_POST['update'])) {
     $query = $conn->prepare($sql);
     $query->bindParam(':uID', $userid, PDO::PARAM_STR);
     $query->execute();
-    $results = $query->fetchAll(PDO::FETCH_OBJ);
-    $cnt = 1;
-    if ($query->rowCount() > 0) {
-        foreach ($results as $result) {
+    $results = $query->fetch(PDO::FETCH_ASSOC);
     ?>
-            <form name="insertrecord" method="post">
-                <div class="row">
-                    <div class="col-md-4"><b>Name course</b>
-                        <input type="text" name="Name_course" value="<?php echo htmlentities($query->Name_course); ?>" class="form-control" required>;
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4"><b>Start day</b>
-                        <input type="text" name="Start_day" value="<?php echo htmlentities($query->Start_day); ?>" class="form-control" required>;
-                    </div>
-                </div>
+    <form name="insertrecord" method="post">
+        <div class="row">
+            <div class="col-md-4"><b>Name course</b>
+                <input type="text" name="Name_course" value="<?php echo $results['Name_course']; ?>" class="form-control" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"><b>Start day</b>
+                <input type="text" name="Start_day" value="<?php echo $results['Start_day']; ?>" class="form-control" required>
+            </div>
+        </div>
 
-                <div class="row">
-                    <div class="col-md-4"><b>End day</b>
-                        <input type="text" name="End_day" value="<?php echo htmlentities($query->End_day); ?>" class="form-control" required>;
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-md-4"><b>End day</b>
+                <input type="text" name="End_day" value="<?php echo $results['End_day']; ?>" class="form-control" required>
+            </div>
+        </div>
         <?php
-        }
-    }
         ?>
         <div class="row" style="margin-top:1%">
             <div class="col-md-8">
                 <input type="submit" name="update" value="update">
             </div>
         </div>
-            </form>
+    </form>
 
 
 

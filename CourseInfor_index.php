@@ -45,6 +45,8 @@ require_once 'dbconfig.php';
                                     <th>Course Name</th>
                                     <th>Start Day</th>
                                     <th>End Day</th>
+                                    <th>Fix</th>
+                                    <th>Delete</th>
                                 </thead>
                                 <tbody>
                                     <?php
@@ -62,7 +64,7 @@ require_once 'dbconfig.php';
                                                 <td><?php echo htmlentities($result->Start_day) ?></td>
                                                 <td><?php echo htmlentities($result->End_day) ?></td>
                                                 <td><a href="updateCourse.php?ID=<?php echo htmlentities($result->ID); ?>"><button></button></button></a></td>
-
+                                                <td><a href="deleteCourse.php?Del=<?php echo htmlentities($result->ID); ?>"><button></button></button></a></td>
                                             </tr>
 
                                             <?php
