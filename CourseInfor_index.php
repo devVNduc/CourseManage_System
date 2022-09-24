@@ -48,11 +48,11 @@ require_once 'dbconfig.php';
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $sql = "SELECT Name_course,Start_day,End_day from courses_infor";
+                                    $sql = "SELECT ID,Name_course,Start_day,End_day from courses_infor";
                                     $query = $conn->prepare($sql); //chuẩn bị kết nối câu lệnh 
                                     $query->execute(); //thực hiện kết nối
                                     $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                    $ctn = 1;
+                                    $ctn = 0;
                                     if ($query->rowCount() > 0) {
                                         foreach ($results as $result) {
                                     ?>
@@ -61,13 +61,17 @@ require_once 'dbconfig.php';
                                                 <td><?php echo htmlentities($result->Name_course) ?></td>
                                                 <td><?php echo htmlentities($result->Start_day) ?></td>
                                                 <td><?php echo htmlentities($result->End_day) ?></td>
-                                                <td><a href="updateCourse.php?id="><button style=""></button></a></td>
+                                                <td><a href="updateCourse.php?ID=<?php echo htmlentities($result->ID); ?>"><button></button></button></a></td>
 
                                             </tr>
+
+                                            <?php
+                                            $ctn++;
+                                            ?>
                                     <?php
                                         }
                                     }
-                                    $ctn++;
+
                                     ?>
 
                                 </tbody>
